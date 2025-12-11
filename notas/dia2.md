@@ -357,7 +357,7 @@ Es el paradigma de programación funcional.
                                - Para poder pasar funciones a otras funciones que quiero usar y que me exigen por articulo 33 que les pase funciones como parámetros de entrada.
 # Modelo de programación MapReduce
 
-Es un modelo, ideado originalmente por Google, para procesar grandes volúmenes de datos. La gracia es que soporta procesamiento distribuido y paralelo. Es decir, cuanto planteo el algoritmo de esta forma (en lugar de otras formas) puedo paralelizar el procesamiento de los procesos quee quiera aplicar sobre los datos.
+Es un modelo, ideado originalmente por Google, para procesar grandes volúmenes de datos. La gracia es que soporta procesamiento distribuido y paralelo. Es decir, cuanto planteo el algoritmo de esta forma (en lugar de otras formas) puedo paralelizar el procesamiento de los procesos que quiera aplicar sobre los datos.
 
 Cualquier procesamiento que quiera hacer sobre un conjunto de datos, lo puedo plantear como una serie de pasos Map y Reduce.
 
