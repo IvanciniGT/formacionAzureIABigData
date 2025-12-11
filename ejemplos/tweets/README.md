@@ -112,3 +112,24 @@ Tampoco me vuelvo loco y hago particiones de 1 dato cada una.
 
 Pero ... 100, 1000, 10000 particiones suele ser razonable.
 Depende de el tipo de dato y el procesamiento que haga.
+
+---
+
+# Cómo funcionaría esto en la realidad de Twitter?
+
+    Dispositivos de los usuarios
+
+        Tenemos instalado X   ----> tweets ---->  Microservicio Ingestor  ----> Kafka (Broker de mensajería)
+                                                   Autenticación                  Cola
+                                                   Autorización
+
+        Kafka    <----- Proceso de Spark (Streaming*) --- Hace la publicación de los tweets el usuario
+         Cola(Tweets) <-- Otro proceso se encarga de extraer hashtags e irlos agrupando ----> BBDD
+                      <-- Otro proceso que extrae menciones ---> Kafka (Cola Menciones) <-- Envío de notificaciones
+                      <-- Otro proceso para validación por IA de contenido
+                      ...
+
+        Para el trending topic, una vez que tengo los hashtags agrupados en la BBDD, puedo tener otro proceso de Spark (batch, que ejecuto cada hora) que lea la BBDD y calcule los trending topics con esa periódicidad.
+
+Spark Streaming... nos permite ir aplicando la misma transformación map-reduce a intervalos de tiempo bastante cortos.
+        Cada X segundos, Spark Streaming coge los tweets que han llegado en esos X segundos,
