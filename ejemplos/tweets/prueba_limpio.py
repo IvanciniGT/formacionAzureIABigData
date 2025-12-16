@@ -45,12 +45,17 @@ print("El resultado final (funciones clasicas) es:", resultado)
 rdd = sc.parallelize(range(1, 1000000001))
 ## Reescribo usando lambdas:
 resultado = rdd \
-   .map( lambda numero: numero * 2 ) \
    .map( lambda numero: numero / 3 ) \
+   .map( lambda numero: numero * 2 ) \
    .map( lambda numero: round(numero) ) \
    .map( lambda numero: numero + 5 ) \
    .filter( lambda numero: numero % 2 == 0 ) \
    .collect()
+
+#for(n) in listado:
+#    if(f_filtrado(f_map(f_map2(f_map3(f_map4(n)))))):
+#        print(n)
+
 
 print("El resultado final (lambda) es:", resultado)
 
